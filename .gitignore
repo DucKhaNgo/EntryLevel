@@ -1,0 +1,8 @@
+/node_modules
+# .env
+*.pem
+
+# build / generate output
+dist
+src/public
+package-lock.json

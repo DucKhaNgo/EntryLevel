@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  ts-node-docker:
+    environment:
+      - NODE_ENV=production
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: EntryLevel-BE-KhaNgo
+    ports:
+      - '3001:3001'
+    command: node dist/server.js
