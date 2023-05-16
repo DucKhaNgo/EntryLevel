@@ -5,4 +5,3 @@
 # build / generate output
 dist
 src/public
-package-lock.json
