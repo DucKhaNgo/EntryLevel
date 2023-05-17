@@ -320,18 +320,18 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ 16705:
+/***/ 27:
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
 Promise.resolve(/* import() eager */).then(__webpack_require__.t.bind(__webpack_require__, 89222, 23));
-Promise.resolve(/* import() eager */).then(__webpack_require__.t.bind(__webpack_require__, 83751, 23));
 Promise.resolve(/* import() eager */).then(__webpack_require__.t.bind(__webpack_require__, 78301, 23));
+Promise.resolve(/* import() eager */).then(__webpack_require__.t.bind(__webpack_require__, 83751, 23));
 Promise.resolve(/* import() eager */).then(__webpack_require__.t.bind(__webpack_require__, 54765, 23));
 Promise.resolve(/* import() eager */).then(__webpack_require__.t.bind(__webpack_require__, 5192, 23))
 
 /***/ }),
 
-/***/ 66007:
+/***/ 61916:
 /***/ (() => {
 
 
@@ -366,7 +366,7 @@ var axios = __webpack_require__(40248);
 ;// CONCATENATED MODULE: ./src/apiServices/session.tsx
 
 async function fetchSessions(short_title, status) {
-    return axios/* default.get */.Z.get("http://localhost:3001/sessions", {
+    return axios/* default.get */.Z.get("https://d1pjsvwmoem0gh.cloudfront.net/sessions", {
         params: {
             short_title,
             status
