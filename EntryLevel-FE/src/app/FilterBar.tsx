@@ -1,44 +1,56 @@
-import { EProductShortTitle, ESessionStatus } from "@/types/session";
-import {
-  Box,
-  FormControl,
-  InputLabel,
-  MenuItem,
-  Select,
-  Stack,
-  TextField,
-} from "@mui/material";
+import ClearableSelect from "@/components/ClearableSelect";
+import { EProductShortTitle, ESessionStatus } from "@/types/api";
+import { Box, Stack } from "@mui/material";
+export type FilterState = {
+  shortTitle: null | EProductShortTitle;
+  status: null | ESessionStatus;
+};
 
-export default function FilterBar() {
+function FilterBar({
+  filterState,
+  onSubmit,
+}: {
+  filterState: FilterState;
+  onSubmit: (newState: FilterState) => void;
+}) {
   return (
     <Stack direction="row" spacing={2}>
       <Box sx={{ minWidth: 240 }}>
-        <FormControl fullWidth>
-          <InputLabel>Title</InputLabel>
-          <Select label="Title">
-            {(
-              Object.keys(
-                EProductShortTitle
-              ) as (keyof typeof EProductShortTitle)[]
-            ).map((x) => (
-              <MenuItem value={EProductShortTitle[x]}>{x}</MenuItem>
-            ))}
-          </Select>
-        </FormControl>
+        <ClearableSelect
+          label="Short Title"
+          value={filterState.shortTitle}
+          options={(
+            Object.keys(
+              EProductShortTitle
+            ) as (keyof typeof EProductShortTitle)[]
+          ).map((x) => ({ value: EProductShortTitle[x], label: x }))}
+          onChange={(e) => {
+            onSubmit({
+              ...filterState,
+              shortTitle: e.target.value as EProductShortTitle,
+            });
+          }}
+          onClear={() => onSubmit({ ...filterState, shortTitle: null })}
+        />
       </Box>
 
       <Box sx={{ minWidth: 120 }}>
-        <FormControl fullWidth>
-          <InputLabel>Status</InputLabel>
-          <Select label="Status">
-            {(
-              Object.keys(ESessionStatus) as (keyof typeof ESessionStatus)[]
-            ).map((x) => (
-              <MenuItem value={ESessionStatus[x]}>{x}</MenuItem>
-            ))}
-          </Select>
-        </FormControl>
+        <ClearableSelect
+          label="Status"
+          value={filterState.status}
+          options={(
+            Object.keys(ESessionStatus) as (keyof typeof ESessionStatus)[]
+          ).map((x) => ({ value: ESessionStatus[x], label: x }))}
+          onChange={(e) =>
+            onSubmit({
+              ...filterState,
+              status: e.target.value as ESessionStatus,
+            })
+          }
+          onClear={() => onSubmit({ ...filterState, status: null })}
+        />
       </Box>
     </Stack>
   );
 }
+export default FilterBar;

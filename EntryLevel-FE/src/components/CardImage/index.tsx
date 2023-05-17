@@ -1,9 +1,8 @@
-import { IProgramItem } from "@/types/session";
+import { IProgramItemWithDates } from "@/types/internalApp";
 import { Card, CardContent, Stack, Typography } from "@mui/material";
 import moment from "moment/moment";
-import "./styles.css";
 
-export default function CardImage(imageInfo: IProgramItem) {
+export default function CardImage(imageInfo: IProgramItemWithDates) {
   return (
     <Card sx={{ minWidth: 200 }}>
       <CardContent>
